@@ -32,7 +32,8 @@
     "jsdom": "latest",
     "underscore": "1.4.4",
     "optparse": "1.0.5",
-    "twit": "1.1.6"
+    "twit": "1.1.6",
+    "chess": "latest"
   },
 
   "engines": {
