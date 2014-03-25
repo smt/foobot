@@ -70,7 +70,7 @@ module.exports = (robot) ->
     #   cmds = cmds.filter (cmd) ->
     #     cmd.match new RegExp(msg.match[1], 'i')
 
-    emit = "please visit http://ghostbot.herokuapp.com for a list of valid commands"
+    emit = "please visit http://foobot.herokuapp.com for a list of valid commands"
 
     # unless robot.name.toLowerCase() is 'hubot'
     #   emit = emit.replace /hubot/ig, robot.name
