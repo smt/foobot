@@ -31,7 +31,8 @@
     "soupselect": "latest",
     "jsdom": "latest",
     "underscore": "latest",
-    "optparse": "1.0.5"
+    "optparse": "1.0.5",
+    "chess": "latest"
   },
 
   "engines": {
