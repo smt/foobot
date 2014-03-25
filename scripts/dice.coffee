@@ -11,6 +11,7 @@
 #   hubot roll (die|one) - Roll one six-sided dice
 #   hubot roll dice - Roll two six-sided dice
 #   hubot roll <x>d<y> - roll x dice, each of which has y sides
+#   hubot roll fate - roll 4dF (four six-sided FATE dice)
 #
 # Author:
 #   ab9
@@ -30,6 +31,8 @@ module.exports = (robot) ->
     else
       report roll dice, sides
     msg.reply answer
+  robot.respond /roll fate/i, (msg) ->
+    msg.reply report rollFate()
 
 report = (results) ->
   if results?
@@ -49,3 +52,6 @@ roll = (dice, sides) ->
 
 rollOne = (sides) ->
   1 + Math.floor(Math.random() * sides)
+
+rollFate = ->
+  2 - rollOne(3) for i in [0...4]
