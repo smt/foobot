@@ -47,6 +47,8 @@ parseFate = (msg) ->
     times = if msg.match[1] and msg.match[1][0] is 'x'
       parseInt msg.match[1].slice(1)
     else 1
+    if times > 30
+      return "Please don't make me roll so much."
     modifier = parseInt msg.match[2] || 0
     while times--
       msg.reply report rollFate(), modifier
