@@ -32,6 +32,7 @@
     "jsdom": "latest",
     "underscore": "latest",
     "optparse": "1.0.5",
+    "bgg": "latest",
     "chess": "latest"
   },
 
