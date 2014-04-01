@@ -45,16 +45,21 @@ module.exports = (robot) ->
             (getId i for i in item).join(',')
           else
             getId item
-          bgg('thing', { id: id, type: 'boardgame' }).then(
+          bgg('thing', { id: id, type: 'boardgame', stats: 1 }).then(
             (thing) ->
               item = thing.items.item;
               getStr = (i) ->
-                "#{i.thumbnail}\n#{if i.name.length then i.name[0].value else i.name.value} (#{i.yearpublished.value}) - http://boardgamegeek.com/boardgame/#{i.id}"
+                s = "#{i.thumbnail}\n#{if i.name.length then i.name[0].value else i.name.value} (#{i.yearpublished.value}) - http://boardgamegeek.com/boardgame/#{i.id}"
+                stats = (rank) ->
+                  s += "\n#{rank.friendlyname}: #{rank.value} (#{rank.bayesaverage} Avg Rating)"
+                if i.statistics.ratings.ranks.rank.length
+                  stats rank for rank in i.statistics.ratings.ranks.rank
+                s
               str = if item.length
                 (getStr j for j in item).join('\n\n')
               else
-                getStr(item) + "\n\n#{item.description}"
-              msg.reply "#{str}\n\n#{cite()}"
+                getStr item
+              msg.reply "#{str}\n#{cite()}"
             (error) ->
               robot.emit('error', error) )
         else
